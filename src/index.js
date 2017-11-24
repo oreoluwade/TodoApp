@@ -1,7 +1,7 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const http = require('http');
-const colors = require('colors/safe');
+import express  from 'express';
+import bodyParser from 'body-parser';
+import http from 'http';
+import colors from 'colors/safe';
 
 // create express app
 const app = express();
@@ -24,3 +24,4 @@ server.listen(port);
 
 // log a message to the console to indicate the port the server is running on
 console.log(colors.cyan(`The server is running on port ${port}`));
+
