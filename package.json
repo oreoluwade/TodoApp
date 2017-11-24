@@ -1,0 +1,9 @@
+{
+  "name": "petproj",
+  "version": "1.0.0",
+  "description": "to relearn all sort of stuff",
+  "main": "index.js",
+  "repository": "https://github.com/oreoluwade/petproj.git",
+  "author": "oreoluwade",
+  "license": "MIT"
+}
