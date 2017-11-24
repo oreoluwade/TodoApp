@@ -5,5 +5,14 @@
   "main": "index.js",
   "repository": "https://github.com/oreoluwade/petproj.git",
   "author": "oreoluwade",
-  "license": "MIT"
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "colors": "^1.1.2",
+    "express": "^4.16.2"
+  },
+  "license": "UNLICENSED"
 }
