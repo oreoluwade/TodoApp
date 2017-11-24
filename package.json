@@ -1,18 +1,24 @@
 {
   "name": "petproj",
   "version": "1.0.0",
-  "description": "to relearn all sort of stuff",
+  "description": "exploring nodejs",
   "main": "index.js",
   "repository": "https://github.com/oreoluwade/petproj.git",
   "author": "oreoluwade",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
-    "start": "node index.js"
+    "start": "babel-node ./dist",
+    "build": "babel ./src -d ./dist -w",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
     "colors": "^1.1.2",
     "express": "^4.16.2"
   },
-  "license": "UNLICENSED"
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
 }
