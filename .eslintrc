@@ -10,6 +10,10 @@
     "react"
   ],
   "settings": {
-    "import/ignore": [".js$"]
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
   }
 }
