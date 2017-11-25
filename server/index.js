@@ -1,4 +1,4 @@
-import express  from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
 import http from 'http';
 import colors from 'colors/safe';
@@ -16,12 +16,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // define a route method using the get http verb
 app.get('/', (req, res) => {
   res.send('This is where it begins!!!');
-})
+});
 
 // create server for the app
 const server = http.createServer(app);
 server.listen(port);
 
 // log a message to the console to indicate the port the server is running on
+/* eslint-disable no-console */
 console.log(colors.cyan(`The server is running on port ${port}`));
 
