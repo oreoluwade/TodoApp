@@ -1,5 +1,6 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable import/first */
+/* eslint-disable import/no-unresolved */
 require('dotenv').config();
 
 import fs from 'fs';
