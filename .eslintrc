@@ -12,7 +12,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["server"]
+        "paths": ["server"],
+        "extensions": [".js"]
       }
     },
     "import/extensions": [".js"]
