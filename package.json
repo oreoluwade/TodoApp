@@ -9,10 +9,13 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "npm run build && node ./dist",
-    "start:dev": "nodemon -w server --exec babel-node -- server",
-    "build": "babel ./server -d ./dist"
+    "start:dev": "nodemon -w server --exec node_modules/.bin/babel-node -- server",
+    "build": "node_modules/.bin/babel ./server -d ./dist",
+    "migrate": "node_modules/.bin/babel-node node_modules/.bin/sequelize db:migrate",
+    "undo:migrate": "node_modules/.bin/babel-cli node_modules/.bin/sequelize db:migrate:undo:all"
   },
   "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
     "colors": "^1.1.2",
     "dotenv": "^4.0.0",
