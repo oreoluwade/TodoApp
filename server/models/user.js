@@ -34,7 +34,7 @@ const UserModel = (sequelize, DataTypes) => {
 
   // Instance methods
   User.prototype.hashPassword = function hashPassword() {
-    this.password = bcrypt.hashSync('this.password', bcrypt.genSaltSync(9));
+    this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(9));
   };
 
   User.prototype.validPassword = function validPassword(password) {
