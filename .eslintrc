@@ -19,8 +19,7 @@
   },
   "rules": {
     "import/prefer-default-export": 0,
-    "import/no-unresolved": 0,
-    "import/extensions": [".js"]
+    "import/no-unresolved": 0
   }
 }
 
