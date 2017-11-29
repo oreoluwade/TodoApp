@@ -10,7 +10,7 @@ export default {
       .then(user => res.status(201).send({ user, message: 'User successfully created!!!' }))
       .catch(error => res.status(400).send({ error, message: 'User already exists' }));
   },
-  getUsers: (req, res) => {
+  fetchAllUsers: (req, res) => {
     User.findAll()
       .then(users => res.status(200).send({ users, message: 'Here are the users you requested' }))
       .catch(err => res.status(400).send({ err, message: 'An error occured!' }));
@@ -30,6 +30,17 @@ export default {
       })
       .catch((err) => {
         throw new Error(err);
+      });
+  },
+  deleteUser: (req, res) => {
+    User.destroy({
+      where: { id: req.params.id },
+    })
+      .then((user) => {
+        if (user === 1) {
+          return res.status(200).send({ message: 'User Removed' });
+        }
+        return res.status(404).send({ message: 'No such user! What is dead may never die.' });
       });
   },
 };

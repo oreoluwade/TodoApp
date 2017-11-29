@@ -4,12 +4,11 @@ import { userControllers } from '../controllers';
 const router = express.Router();
 
 router.route('/')
-  .get(userControllers.getUsers);
-// .post()
-// .delete();
+  .get(userControllers.fetchAllUsers);
 
 router.route('/:id')
-  .put(userControllers.updateUserDetails);
+  .put(userControllers.updateUserDetails)
+  .delete(userControllers.deleteUser);
 
 
 router.route('/create')
