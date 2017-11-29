@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt';
-// import pry from 'pryjs';
 
 const UserModel = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
