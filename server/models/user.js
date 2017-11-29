@@ -1,47 +1,48 @@
-import bcrypt from 'bcrypt-nodejs';
+import bcrypt from 'bcrypt';
+// import pry from 'pryjs';
 
-export default {
-  User: (sequelize, DataTypes) => {
-    var User = sequelize.define('User', {
-      username: {
-        type: DataTypes.STRING,
-        allowNull: false,
+const UserModel = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  }, {
+    hooks: {
+      beforeCreate(user) {
+        user.hashPassword();
       },
-      email: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-    }, {
-        classMethods: {
-          associate(models) {
-            // A User can create as many todos as possible
-            User.hasMany(models.Todo, {
-              onDelete: 'CASCADE',
-              foreignKey: 'userId'
-            })
-          }
-        },
-        instanceMethods: {
-          validPassword(password) {
-            return bcrypt.compareSync(password, this.password);
-          },
+    },
+  });
+
+  // Class method
+  User.associate = (models) => {
+    User.hasMany(models.Todo, {
+      onDelete: 'CASCADE',
+      foreignKey: 'userId',
+    });
+  };
+
+  // Instance methods
+  User.prototype.hashPassword = function hashPassword() {
+    this.password = bcrypt.hashSync('this.password', bcrypt.genSaltSync(9));
+  };
+
+  User.prototype.validPassword = function validPassword(password) {
+    bcrypt.compareSync(password, this.password);
+  };
+
+  return User;
+};
 
 
-          hashPassword() {
-            this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(9));
-          }
-        },
-        hooks: {
-          beforeCreate(user) {
-            user.hashPassword();
-          }
-        }
-      });
-    return User;
-  },
-}
+export default UserModel;

@@ -1,6 +1,6 @@
-export default {
-  Todo: (sequelize, DataTypes) => {
-    var Todo = sequelize.define('Todo', {
+const TodoModel =
+  (sequelize, DataTypes) => {
+    const Todo = sequelize.define('Todo', {
       id: {
         autoIncrement: true,
         primaryKey: true,
@@ -18,17 +18,14 @@ export default {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-    }, {
-        classMethods: {
-          associate(models) {
-            // A Todo cannot exist without a user
-            Todo.belongsTo(models.User, {
-              onDelete: 'CASCADE',
-              foreignKey: 'userId'
-            })
-          }
-        }
+    });
+    Todo.associate = (models) => {
+      Todo.belongsTo(models.User, {
+        onDelete: 'CASCADE',
+        foreignKey: 'userId',
       });
+    };
     return Todo;
-  },
-}
+  };
+
+export default TodoModel;
