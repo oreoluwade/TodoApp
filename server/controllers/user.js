@@ -15,5 +15,22 @@ export default {
       .then(users => res.status(200).send({ users, message: 'Here are the users you requested' }))
       .catch(err => res.status(400).send({ err, message: 'An error occured!' }));
   },
+  updateUserDetails: (req, res) => {
+    const userPayload = req.body;
+    User.findById(req.params.id)
+      .then((user) => {
+        if (!user) {
+          res.status(404).send({ message: 'No such user exists yet!' });
+        }
+        user.update(userPayload)
+          .then((updatedUser) => {
+            res.status(200).send({ updatedUser, message: 'Update Successful!' });
+          })
+          .catch(err => res.status(501).send({ err, message: 'Update not Successful!' }));
+      })
+      .catch((err) => {
+        throw new Error(err);
+      });
+  },
 };
 
