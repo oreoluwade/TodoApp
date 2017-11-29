@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import http from 'http';
 import colors from 'colors/safe';
+import morgan from 'morgan';
 
 // create express app
 const app = express();
@@ -12,6 +13,9 @@ const port = process.env.port || 8000;
 // configure app to use the bodyparser middleware to get data as json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// configure app to log requests when they are made
+app.use(morgan('tiny'));
 
 // define a route method using the get http verb
 app.get('/', (req, res) => {
