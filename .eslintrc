@@ -12,13 +12,15 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx"]
+        "paths": ["server"]
       }
-    }
+    },
+    "import/extensions": [".js"]
   },
   "rules": {
     "import/prefer-default-export": 0,
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "import/extensions": [".js"]
   }
 }
 
