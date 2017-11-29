@@ -43,5 +43,17 @@ export default {
         return res.status(404).send({ message: 'No such user! What is dead may never die.' });
       });
   },
+  fetchOneUser: (req, res) => {
+    User.findById(req.params.id)
+      .then((user) => {
+        if (!user) {
+          res.status(404).send({ message: 'User not found' });
+        }
+        res.status(200).send({ user, message: 'Sucessful!' });
+      })
+      .catch((err) => {
+        res.status(501).send({ err, message: 'An error occured' });
+      });
+  },
 };
 
