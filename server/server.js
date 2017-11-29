@@ -32,7 +32,7 @@ server.listen(port);
 
 // log a message to the console to indicate the port the server is running on
 /* eslint-disable no-console */
-console.log(colors.cyan(`The server is running on port ${port}`));
+console.log(colors.cyan(`Server running on port ${port}`));
 
 export default app;
 
