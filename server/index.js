@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import http from 'http';
 import colors from 'colors/safe';
 import morgan from 'morgan';
+import { user, todo } from './routes';
 
 // create express app
 const app = express();
@@ -21,6 +22,9 @@ app.use(morgan('tiny'));
 app.get('/', (req, res) => {
   res.send('This is where it begins!!!');
 });
+
+app.use('/user', user);
+app.use('/todo', todo);
 
 // create server for the app
 const server = http.createServer(app);
