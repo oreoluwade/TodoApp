@@ -17,6 +17,10 @@ export default {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
+    userId: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
