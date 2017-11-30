@@ -17,6 +17,11 @@ const TodoModel =
       completed: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: false,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     });
     Todo.associate = (models) => {

@@ -12,7 +12,7 @@
     "start:dev": "nodemon -w server --exec node_modules/.bin/babel-node -- server",
     "build": "node_modules/.bin/babel ./server -d ./dist",
     "migrate": "node_modules/.bin/babel-node node_modules/.bin/sequelize db:migrate",
-    "undo:migrate": "node_modules/.bin/babel-node node_modules/.bin/sequelize db:migrate:undo:all"
+    "undo:migration": "node_modules/.bin/babel-node node_modules/.bin/sequelize db:migrate:undo:all"
   },
   "dependencies": {
     "bcrypt": "^1.0.3",

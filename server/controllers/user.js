@@ -41,6 +41,9 @@ export default {
           return res.status(200).send({ message: 'User Removed' });
         }
         return res.status(404).send({ message: 'No such user! What is dead may never die.' });
+      })
+      .catch((err) => {
+        res.status(501).send({ err, message: 'Delete operation unsuccessful!' });
       });
   },
   fetchOneUser: (req, res) => {
