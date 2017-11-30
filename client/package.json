@@ -1,0 +1,8 @@
+{
+  "name": "todos-react-app",
+  "version": "1.0.0",
+  "description": "react application to consume the todos API",
+  "main": "index.js",
+  "author": "oreoluwade",
+  "license": "MIT"
+}
