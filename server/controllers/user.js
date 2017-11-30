@@ -1,4 +1,7 @@
+import jwt from 'jsonwebtoken';
 import models from '../models';
+
+const secretOrPrivateKey = process.env.SECRET || 'passkey';
 
 const { User } = models;
 
@@ -7,8 +10,14 @@ export default {
     const userPayload = req.body;
     const { username, email, password } = userPayload;
     User.create({ username, password, email })
-      .then(user => res.status(201).send({ user, message: 'User successfully created!!!' }))
-      .catch(error => res.status(400).send({ error, message: 'User already exists' }));
+      .then((user) => {
+        if (!user) {
+          return res.status(409).send({ message: 'User Already Exists!' });
+        }
+        const token = jwt.sign({ id: user.id, username: user.username }, secretOrPrivateKey);
+        return res.status(201).send({ user, token, message: 'User successfully created!!!' });
+      })
+      .catch(error => res.status(400).send({ error, message: 'User creation failed!' }));
   },
   fetchAllUsers: (req, res) => {
     User.findAll()
@@ -57,6 +66,41 @@ export default {
       .catch((err) => {
         res.status(501).send({ err, message: 'An error occured' });
       });
+  },
+  loginUser: (req, res) => {
+    const { identifier, password } = req.body;
+    User.find({
+      where: {
+        $or: [
+          { email: identifier },
+          { username: identifier },
+        ],
+      },
+    })
+      .then((user) => {
+        if (!user) {
+          return res.status(401).json({ message: 'Invalid credentials' });
+        }
+        if (!user.validPassword(password)) {
+          return res.status(401).json({ message: 'Invalid credentials' });
+        }
+        const token = jwt.sign({
+          id: user.id,
+          username: user.username,
+        }, secretOrPrivateKey);
+        return res.status(200).send({
+          user: {
+            id: user.id,
+            username: user.username,
+            email: user.email,
+          },
+          token,
+          message: 'Login Successful! Token expires in one day.',
+        });
+      });
+  },
+  logoutUser: (req, res) => {
+    res.status(200).send({ message: 'User successfully logged out!' });
   },
 };
 
