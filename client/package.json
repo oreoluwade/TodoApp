@@ -4,5 +4,12 @@
   "description": "react application to consume the todos API",
   "main": "index.js",
   "author": "oreoluwade",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.9.1"
+  }
 }
