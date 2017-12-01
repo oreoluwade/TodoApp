@@ -1,6 +1,11 @@
-import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: './src/index.html',
+  filename: 'index.html',
+  inject: 'body',
+});
 
 export default {
   entry: './src/index.js',
@@ -10,11 +15,16 @@ export default {
   },
   module: {
     rules: [
-      { test: /\.txt$/, use: 'raw-loader' },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+        ],
+      },
     ],
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
-  ],
+  plugins: [HtmlWebpackPluginConfig],
 };
