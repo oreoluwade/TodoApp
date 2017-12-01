@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb-base",
+  "extends": ["airbnb-base", "plugin:react/recommended"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6
@@ -9,14 +9,19 @@
     "jsx-a11y",
     "react"
   ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js"],
-        "paths": ["server"]
+        "extensions": [".js", ".jsx"],
+        "paths": ["server", "client"]
       }
     },
-    "import/extensions": [".js"]
+    "import/extensions": [".js", ".jsx"]
   },
   "rules": {
     "import/prefer-default-export": 0,
@@ -30,7 +35,9 @@
         "optionalDependencies": true,
         "peerDependencies": true
       }
-    ]
+    ],
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1
   }
 }
 
