@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { Provider } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
 import { store } from '../store';
+import { NotFound } from './NotFound';
+import { HomePage } from './HomePage';
 
-class App extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-  }
-
-  render() {
-    return (
-      <Provider store={store}>
-        <div>
-          {this.props.children}
-        </div>
-      </Provider>
-    );
-  }
-}
+const App = () => (
+  <Provider store={store}>
+    <Switch>
+      <Route path="/" exact component={HomePage}></Route>
+      <Route path="*" component={NotFound}></Route>
+    </Switch>
+  </Provider>
+);
 
 export default App;
