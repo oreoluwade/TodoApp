@@ -26,5 +26,8 @@ export default {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   plugins: [HtmlWebpackPluginConfig],
 };
