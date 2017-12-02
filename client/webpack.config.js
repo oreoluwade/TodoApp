@@ -40,6 +40,13 @@ export default {
         ],
       },
       {
+        test: /\.(jpg|png|svg|jpeg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 25000,
+        },
+      },
+      {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
@@ -48,7 +55,7 @@ export default {
         ],
       },
       {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(png|woff|woff2|eot|ttf|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
