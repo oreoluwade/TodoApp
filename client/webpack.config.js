@@ -40,10 +40,26 @@ export default {
         ],
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: 'url-loader?limit=100000',
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
+          },
+        ],
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
           },
         ],
       },
