@@ -1,24 +1,24 @@
 import React from 'react';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import { Card, CardText } from 'material-ui/Card';
+import styled from 'styled-components';
+
+const PaddedCard = styled(Card)`
+  margin-top: 5%;
+  min-height: 150px;
+`;
+
+const CenteredCardText = styled(CardText)`
+  text-align: center;
+  font-weight: bold;
+`;
 
 const HomePage = () => (
-  <Card>
-    <CardHeader
-      title="Hompage"
-      subtitle="Subtitle"
-      actAsExpander={true}
-      showExpandableButton={true}
-    />
-    <CardActions>
-      <FlatButton label="Action1" />
-      <FlatButton label="Action2" />
-    </CardActions>
-    <CardText>
+  <PaddedCard>
+    <CenteredCardText>
       Welcome! Here, you can create Todos and
       mark them as completed when you are done.
-    </CardText>
-  </Card>
+    </CenteredCardText>
+  </PaddedCard>
 );
 
 export default HomePage;
