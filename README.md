@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/oreoluwade/petproj.svg?branch=develop)](https://travis-ci.org/oreoluwade/petproj)
+[![Coverage Status](https://coveralls.io/repos/github/oreoluwade/petproj/badge.svg?branch=develop)](https://coveralls.io/github/oreoluwade/petproj?branch=develop)
 # Simple-Todos
 
 Instructions
