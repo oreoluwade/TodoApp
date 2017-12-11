@@ -1,5 +1,12 @@
 language: node_js
 node_js: 'stable'
 
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database petproj-test;' -U postgres
+  - npm run migrate
+
 after_success:
   - coveralls < coverage/lcov.info
