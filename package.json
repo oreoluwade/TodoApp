@@ -9,6 +9,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "npm run build && node ./dist",
+    "test": "jest --coverage --forceExit",
     "start:dev": "nodemon -w server --exec node_modules/.bin/babel-node -- server",
     "build": "node_modules/.bin/babel ./server -d ./dist",
     "migrate": "node_modules/.bin/babel-node node_modules/.bin/sequelize db:migrate",
@@ -31,12 +32,17 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.2",
+    "babel-jest": "^21.2.0",
     "babel-preset-env": "^1.6.1",
+    "coveralls": "^3.0.0",
     "eslint": "^4.11.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
-    "nodemon": "^1.12.1"
+    "faker": "^4.1.0",
+    "jest-cli": "^21.2.1",
+    "nodemon": "^1.12.1",
+    "supertest": "^3.0.0"
   }
 }
